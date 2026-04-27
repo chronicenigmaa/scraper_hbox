@@ -10,6 +10,13 @@ load_dotenv()
 import streamlit as st
 from scraper import scrape_all, score_all, QUERIES
 
+# Works locally (.env) and on Streamlit Cloud (Secrets manager)
+def get_secret(key):
+    try:
+        return st.secrets[key]
+    except Exception:
+        return os.getenv(key, "")
+
 st.set_page_config(
     page_title="Lead Gen Dashboard",
     layout="wide",
@@ -159,8 +166,8 @@ if run_clicked:
     st.session_state.error = None
     st.session_state.leads = []
 
-    serpapi_key = os.getenv("SERPAPI_KEY", "")
-    openai_key  = os.getenv("OPENAI_API_KEY", "")
+    serpapi_key = get_secret("SERPAPI_KEY")
+    openai_key  = get_secret("OPENAI_API_KEY")
 
     selected = [p for p, on in [
         ("LinkedIn",  use_linkedin),
