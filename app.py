@@ -18,12 +18,26 @@ st.set_page_config(
 
 st.markdown("""
 <style>
-html, body, [class*="css"] { font-family: 'Inter', 'Segoe UI', sans-serif; }
-.stApp { background: #f1f5f9; }
+html, body, [class*="css"] {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    color: #1e293b;
+}
+.stApp { background: #f1f5f9; color: #1e293b; }
+
+/* Force all text dark throughout */
+section[data-testid="stSidebar"] * { color: #1e293b !important; }
+section[data-testid="stSidebar"] .stCaption p,
+section[data-testid="stSidebar"] small { color: #64748b !important; }
+.stMarkdown p, .stText { color: #1e293b !important; }
+.stCaption p { color: #64748b !important; }
+label[data-testid="stWidgetLabel"] p { color: #1e293b !important; }
+label[data-testid="stCheckbox"] p { color: #1e293b !important; }
+h1, h2, h3 { color: #0f172a !important; }
 
 section[data-testid="stSidebar"] {
     background: #ffffff;
     border-right: 1px solid #e2e8f0;
+    color: #1e293b;
 }
 section[data-testid="stSidebar"] .block-container { padding: 0 1.2rem 2rem; }
 
